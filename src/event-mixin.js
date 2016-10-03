@@ -242,7 +242,12 @@ export function addEventListener(type, fn, optionsOrCapture) {
           return;
         }
       }
-      return fn(e);
+
+      if (typeof fn === 'function') {
+          return fn(e);
+      } else {
+          return fn.handleEvent(e);
+      }
     }
   };
   fn.__eventWrapper = wrappedFn;
