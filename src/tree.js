@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 // TODO(sorvell): circular (patch loads tree and tree loads patch)
 // for now this is stuck on `utils`
-//import {patchNode} from './patch'
+import {patchNode} from './patch'
 import * as utils from './utils'
 
 // native add/remove
@@ -196,7 +196,7 @@ tree.Logical = {
         n.__dom.parentNode = node;
         n.__dom.nextSibling = c$[i+1] || null;
         n.__dom.previousSibling = c$[i-1] || null;
-        utils.common.patchNode(n);
+        patchNode(n);
       }
     }
   },
@@ -222,7 +222,7 @@ tree.Logical = {
   },
 
   _linkNode(node, container, ref_node) {
-    utils.common.patchNode(node);
+    patchNode(node);
     ref_node = ref_node || null;
     node.__dom = node.__dom || {};
     container.__dom = container.__dom || {};
